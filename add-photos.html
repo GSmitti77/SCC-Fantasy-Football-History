@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add Photos &amp; Videos — SCC Fantasy History</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/favicon.png">
+<style>
+  .step{margin:0 0 16px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;background:var(--blue-dk);color:#fff;border:1px solid var(--blue);
+    font:inherit;font-weight:650;font-size:14px;padding:10px 16px;border-radius:8px;cursor:pointer;
+  }
+  .btn:hover{background:var(--blue)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+  .btn.ghost{background:transparent;color:var(--muted);border-color:var(--line)}
+  .btn.ghost:hover{background:#12294a;color:var(--ink)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  select,input[type=text]{
+    background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:8px;
+    padding:9px 11px;font:inherit;font-size:14px;
+  }
+  #drop{
+    border:2px dashed var(--line);border-radius:14px;padding:44px 20px;text-align:center;
+    background:#0b1c31;color:var(--muted);transition:.15s ease;margin-top:6px;
+  }
+  #drop.hot{border-color:var(--blue-lt);background:#12294a;color:var(--ink)}
+  #drop b{display:block;font-size:17px;color:var(--ink);margin-bottom:4px}
+  .queue{list-style:none;padding:0;margin:14px 0 0}
+  .queue li{
+    display:flex;gap:12px;align-items:center;padding:9px;border:1px solid var(--line);
+    border-radius:10px;background:var(--panel);margin-bottom:8px;
+  }
+  .queue .thumb{width:74px;height:56px;flex:none;border-radius:6px;object-fit:cover;background:var(--panel2)}
+  .queue .meta{flex:1;min-width:0}
+  .queue .fn{font-weight:600;font-size:13.5px;word-break:break-all}
+  .queue input[type=text]{width:100%;margin-top:5px;font-size:13px;padding:6px 9px}
+  .queue .size{font-size:11.5px;color:var(--dim);white-space:nowrap}
+  .x{background:none;border:0;color:var(--dim);font-size:19px;cursor:pointer;padding:0 6px}
+  .x:hover{color:var(--toilet)}
+  .warn{font-size:11.5px;color:var(--gold);margin-top:3px}
+  .bad{color:var(--toilet)}
+  .log{
+    font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;background:#0b1c31;border:1px solid var(--line);
+    border-radius:10px;padding:14px;white-space:pre-wrap;color:var(--muted);max-height:280px;overflow:auto;
+  }
+  .ok{color:#7fd6a0}
+  .existing{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .existing span{
+    font-size:12px;background:var(--panel2);border:1px solid var(--line);border-radius:99px;
+    padding:4px 10px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;
+  }
+  .existing button{background:none;border:0;color:var(--dim);cursor:pointer;font-size:14px;padding:0;line-height:1}
+  .existing button:hover{color:var(--toilet)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap brand">
+    <img class="logo" src="assets/logo-white.png" alt="SCC league logo">
+    <div>
+      <h1 class="title">Add <span>Photos</span> &amp; Videos</h1>
+      <p class="sub">Drag files in — this copies them into the right folder and updates the gallery for you.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs"><div class="wrap">
+  <button onclick="location.href='index.html'">← Back to the site</button>
+</div></nav>
+
+<main><div class="wrap">
+
+  <div id="unsupported" class="empty" style="display:none">
+    <b>This browser can't write files.</b><br><br>
+    Use <b>Chrome</b> or <b>Edge</b> on a computer. Safari and Firefox don't support the folder-access
+    feature this tool needs. (You can still add files by hand — see <code>HOW-TO-PUBLISH.md</code>.)
+  </div>
+
+  <div id="app">
+    <h2>1 · Connect your site folder</h2>
+    <p class="note step">Pick the <b>site</b> folder — the one containing <code>index.html</code>. Your browser will
+      ask permission to edit it. Nothing leaves your computer.</p>
+    <div class="row">
+      <button class="btn" id="pick">Choose site folder…</button>
+      <span id="folderState" class="oname">Not connected</span>
+    </div>
+
+    <h2>2 · Choose the season</h2>
+    <div class="row">
+      <select id="year"></select>
+      <span class="oname" id="yearState"></span>
+    </div>
+    <div class="existing" id="existing"></div>
+
+    <h2>3 · Drop your files</h2>
+    <div id="drop">
+      <b>Drag photos and videos here</b>
+      or <a href="#" id="browse">browse…</a><br>
+      <span style="font-size:12.5px">JPG · PNG · GIF · MP4 · WEBM · M4V</span>
+    </div>
+    <input type="file" id="filein" multiple accept="image/*,video/*" style="display:none">
+    <ul class="queue" id="queue"></ul>
+
+    <div class="row" style="margin-top:18px">
+      <button class="btn" id="save" disabled>Save to the site</button>
+      <button class="btn ghost" id="clear">Clear list</button>
+    </div>
+
+    <h2>Activity</h2>
+    <div class="log" id="log">Waiting…</div>
+    <p class="note">After saving, commit and push the <code>photos</code> folder and
+      <code>data/photos.json</code> to GitHub. If you use the offline
+      <code>SCC-Fantasy-History.html</code> file, re-run <code>build_standalone.py</code> so it
+      picks up the new files.</p>
+  </div>
+
+</div></main>
+
+<footer><div class="wrap">Local tool — files are copied on your own computer, never uploaded anywhere.</div></footer>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s) { return document.querySelector(s); };
+  var VIDEO = /\.(mp4|m4v|mov|webm|ogv)$/i;
+  var IMAGE = /\.(jpe?g|png|gif|webp|avif)$/i;
+  var HEIC  = /\.(heic|heif)$/i;
+
+  var root = null;            // site folder handle
+  var photosJson = null;      // parsed data/photos.json
+  var queue = [];             // {file, name, caption}
+
+  if (!window.showDirectoryPicker) {
+    $("#unsupported").style.display = "";
+    $("#app").style.display = "none";
+    return;
+  }
+
+  function log(msg, cls) {
+    var el = $("#log");
+    if (el.textContent === "Waiting…") el.textContent = "";
+    var line = document.createElement("div");
+    if (cls) line.className = cls;
+    line.textContent = msg;
+    el.appendChild(line);
+    el.scrollTop = el.scrollHeight;
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function human(b) {
+    return b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
+  }
+  // "Draft Night 2019 (1).JPG" -> "draft-night-2019-1.jpg"
+  function safeName(n) {
+    var dot = n.lastIndexOf(".");
+    var stem = dot > 0 ? n.slice(0, dot) : n;
+    var ext = dot > 0 ? n.slice(dot).toLowerCase() : "";
+    stem = stem.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "file";
+    return stem + ext;
+  }
+
+  /* ---------- step 1: connect folder ---------- */
+  $("#pick").onclick = async function () {
+    try {
+      var handle = await window.showDirectoryPicker({ mode: "readwrite" });
+      // sanity-check that this really is the site folder
+      try {
+        await handle.getFileHandle("index.html");
+      } catch (e) {
+        log("That folder has no index.html — pick the 'site' folder itself.", "bad");
+        return;
+      }
+      var dataDir = await handle.getDirectoryHandle("data");
+      var fh = await dataDir.getFileHandle("photos.json");
+      photosJson = JSON.parse(await (await fh.getFile()).text());
+      root = handle;
+      $("#folderState").textContent = "Connected: " + handle.name;
+      $("#folderState").style.color = "var(--ink)";
+      log("Connected to " + handle.name + "/", "ok");
+      await loadYears(dataDir);
+      refreshExisting();
+      refreshSave();
+    } catch (e) {
+      if (e && e.name === "AbortError") return;   // user closed the picker
+      if (e && e.name === "SecurityError") {
+        log("This browser won't grant folder access to a file opened directly.", "bad");
+        log("Fix: open a Terminal, run  cd <your site folder> && python3 -m http.server 8000", "bad");
+        log("then visit  http://localhost:8000/add-photos.html", "bad");
+        return;
+      }
+      log("Could not open that folder: " + e.message, "bad");
+    }
+  };
+
+  async function loadYears(dataDir) {
+    var years = Object.keys(photosJson).filter(function (k) { return /^\d{4}$/.test(k); });
+    try {
+      var lh = await dataDir.getFileHandle("league.json");
+      var lg = JSON.parse(await (await lh.getFile()).text());
+      (lg.seasons || []).forEach(function (s) {
+        if (years.indexOf(String(s.year)) < 0) years.push(String(s.year));
+      });
+    } catch (e) { /* league.json optional here */ }
+    years.sort().reverse();
+    var sel = $("#year");
+    sel.innerHTML = years.map(function (y) { return "<option>" + y + "</option>"; }).join("");
+    sel.onchange = refreshExisting;
+  }
+
+  function refreshExisting() {
+    var y = $("#year").value;
+    var list = (photosJson && photosJson[y]) || [];
+    $("#yearState").textContent = list.length
+      ? list.length + " item" + (list.length === 1 ? "" : "s") + " already in this season"
+      : "nothing in this season yet";
+    $("#existing").innerHTML = list.map(function (p, i) {
+      return "<span>" + (VIDEO.test(p.file) ? "▶ " : "") + esc(p.file) +
+        "<button title='Remove from the gallery' data-i='" + i + "'>×</button></span>";
+    }).join("");
+    Array.prototype.forEach.call($("#existing").querySelectorAll("button"), function (b) {
+      b.onclick = async function () {
+        var idx = +b.dataset.i, removed = photosJson[y][idx];
+        photosJson[y].splice(idx, 1);
+        await writeJson();
+        log("Removed " + removed.file + " from " + y + " (the file itself is still on disk).");
+        refreshExisting();
+      };
+    });
+  }
+
+  /* ---------- step 3: queue files ---------- */
+  var drop = $("#drop");
+  ["dragenter", "dragover"].forEach(function (ev) {
+    drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("hot"); });
+  });
+  ["dragleave", "drop"].forEach(function (ev) {
+    drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("hot"); });
+  });
+  drop.addEventListener("drop", function (e) { add(e.dataTransfer.files); });
+  // don't let a stray miss navigate away from the page
+  window.addEventListener("dragover", function (e) { e.preventDefault(); });
+  window.addEventListener("drop", function (e) { e.preventDefault(); });
+
+  $("#browse").onclick = function (e) { e.preventDefault(); $("#filein").click(); };
+  $("#filein").onchange = function () { add(this.files); this.value = ""; };
+
+  function add(files) {
+    Array.prototype.forEach.call(files, function (f) {
+      var name = safeName(f.name);
+      if (!IMAGE.test(name) && !VIDEO.test(name) && !HEIC.test(name)) {
+        log("Skipped " + f.name + " — not a photo or video.", "bad");
+        return;
+      }
+      if (queue.some(function (q) { return q.name === name; })) {
+        log("Skipped " + f.name + " — already in the list.");
+        return;
+      }
+      queue.push({ file: f, name: name, caption: "" });
+    });
+    renderQueue();
+    refreshSave();
+  }
+
+  function renderQueue() {
+    var ul = $("#queue");
+    ul.innerHTML = "";
+    queue.forEach(function (q, i) {
+      var li = document.createElement("li");
+      var notes = [];
+      if (HEIC.test(q.name)) notes.push("HEIC won't display in browsers — export as JPG first.");
+      if (/\.mov$/i.test(q.name)) notes.push("MOV often won't play in Chrome — MP4 is safer.");
+      if (q.file.size > 100 * 1048576) notes.push("Over 100 MB — GitHub will refuse this file.");
+      else if (q.file.size > 50 * 1048576) notes.push("Over 50 MB — GitHub will warn about this.");
+
+      li.innerHTML =
+        "<img class='thumb' alt=''>" +
+        "<div class='meta'><div class='fn'>" + (VIDEO.test(q.name) ? "▶ " : "") + esc(q.name) + "</div>" +
+        "<input type='text' placeholder='Caption (optional)' value='" + esc(q.caption) + "' data-i='" + i + "'>" +
+        (notes.length ? "<div class='warn'>" + esc(notes.join(" ")) + "</div>" : "") +
+        "</div><span class='size'>" + human(q.file.size) + "</span>" +
+        "<button class='x' data-i='" + i + "' title='Remove'>×</button>";
+      ul.appendChild(li);
+
+      var img = li.querySelector(".thumb");
+      if (IMAGE.test(q.name)) {
+        var u = URL.createObjectURL(q.file);
+        img.src = u;
+        img.onload = function () { URL.revokeObjectURL(u); };
+      } else {
+        img.replaceWith(Object.assign(document.createElement("div"), {
+          className: "thumb",
+          style: "display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px",
+          textContent: VIDEO.test(q.name) ? "▶" : "?"
+        }));
+      }
+      li.querySelector("input").oninput = function () { queue[+this.dataset.i].caption = this.value; };
+      li.querySelector(".x").onclick = function () { queue.splice(+this.dataset.i, 1); renderQueue(); refreshSave(); };
+    });
+  }
+
+  $("#clear").onclick = function () { queue = []; renderQueue(); refreshSave(); };
+  function refreshSave() { $("#save").disabled = !(root && queue.length); }
+
+  /* ---------- save ---------- */
+  async function writeJson() {
+    var dataDir = await root.getDirectoryHandle("data");
+    var fh = await dataDir.getFileHandle("photos.json", { create: true });
+    var w = await fh.createWritable();
+    await w.write(JSON.stringify(photosJson, null, 2));
+    await w.close();
+  }
+
+  $("#save").onclick = async function () {
+    var y = $("#year").value;
+    $("#save").disabled = true;
+    try {
+      var photosDir = await root.getDirectoryHandle("photos", { create: true });
+      var yearDir = await photosDir.getDirectoryHandle(y, { create: true });
+      if (!photosJson[y]) photosJson[y] = [];
+
+      for (var i = 0; i < queue.length; i++) {
+        var q = queue[i];
+        var name = q.name;
+        // never silently overwrite an existing file
+        var taken = photosJson[y].some(function (p) { return p.file === name; });
+        if (taken) {
+          var dot = name.lastIndexOf(".");
+          name = name.slice(0, dot) + "-" + Date.now().toString(36).slice(-4) + name.slice(dot);
+          log("A file named " + q.name + " already existed — saved as " + name + " instead.");
+        }
+        var fh = await yearDir.getFileHandle(name, { create: true });
+        var w = await fh.createWritable();
+        await w.write(q.file);
+        await w.close();
+        var entry = { file: name };
+        if (q.caption.trim()) entry.caption = q.caption.trim();
+        photosJson[y].push(entry);
+        log("Saved photos/" + y + "/" + name + "  (" + human(q.file.size) + ")", "ok");
+      }
+      await writeJson();
+      log("Updated data/photos.json — " + queue.length + " item(s) added to " + y + ".", "ok");
+      log("Now commit and push to GitHub to publish.");
+      queue = [];
+      renderQueue();
+      refreshExisting();
+    } catch (e) {
+      log("Save failed: " + e.message, "bad");
+    }
+    refreshSave();
+  };
+})();
+</script>
+</body>
+</html>

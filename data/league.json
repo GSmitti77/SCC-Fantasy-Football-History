@@ -1,0 +1,1197 @@
+{
+  "siteTitle": "SCC Fantasy Football",
+  "subtitle": "League history since 2019",
+  "eras": {
+    "pre": {
+      "label": "Pre-SCC",
+      "years": [
+        2019,
+        2020,
+        2021
+      ]
+    },
+    "scc": {
+      "label": "SCC",
+      "years": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    }
+  },
+  "seasons": [
+    {
+      "year": 2019,
+      "era": "pre",
+      "seasonLabel": "Year 1",
+      "leagueName": "Teeny Fan Club",
+      "teamCount": 8,
+      "draftSource": "ESPN draft results email (PDF)",
+      "champion": {
+        "team": "Spider-Ham",
+        "owners": [
+          "Garrett Smith"
+        ]
+      },
+      "runnerUp": {
+        "team": "Feel The Pain",
+        "owners": [
+          "Brian Clark",
+          "Miles Clark"
+        ]
+      },
+      "lastPlace": {
+        "team": "Team Smeeze",
+        "owners": [
+          "Mia Connor"
+        ]
+      },
+      "teams": [
+        {
+          "name": "Spider-Ham",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "draftSlot": 1
+        },
+        {
+          "name": "Brentwood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "draftSlot": 2,
+          "draftedAs": "Team connor"
+        },
+        {
+          "name": "Brenthood Thanos",
+          "owners": [
+            "Ben Connor"
+          ],
+          "draftSlot": 3
+        },
+        {
+          "name": "Team Smeeze",
+          "owners": [
+            "Mia Connor"
+          ],
+          "draftSlot": 4
+        },
+        {
+          "name": "Team Kailee",
+          "owners": [
+            "Kailee Smith"
+          ],
+          "draftSlot": 5,
+          "draftedAs": "Team Smith"
+        },
+        {
+          "name": "Team Savannah",
+          "owners": [
+            "Savannah Wheeler"
+          ],
+          "draftSlot": 6,
+          "draftedAs": "Team Smith"
+        },
+        {
+          "name": "Feel The Pain",
+          "owners": [
+            "Brian Clark",
+            "Miles Clark"
+          ],
+          "draftSlot": 7
+        },
+        {
+          "name": "SConnor Smash",
+          "owners": [
+            "Sara Connor"
+          ],
+          "draftSlot": 8
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "era": "pre",
+      "seasonLabel": "Year 2",
+      "leagueName": "ConnorClarkSmith Fantasy",
+      "teamCount": 8,
+      "draftSource": "ESPN draft results email (PDF)",
+      "champion": {
+        "team": "Teeny Tot",
+        "owners": [
+          "Miles Clark"
+        ]
+      },
+      "runnerUp": {
+        "team": "Spider-Ham",
+        "owners": [
+          "Garrett Smith"
+        ]
+      },
+      "lastPlace": {
+        "team": "Team Savannah",
+        "owners": [
+          "Savannah Wheeler"
+        ]
+      },
+      "teams": [
+        {
+          "name": "FLUFFY BUNNIES",
+          "owners": [
+            "Kailee Smith",
+            "Sara Connor"
+          ],
+          "draftSlot": 1
+        },
+        {
+          "name": "Teeny Tot",
+          "owners": [
+            "Miles Clark"
+          ],
+          "draftSlot": 2
+        },
+        {
+          "name": "Southside Smalldogs",
+          "owners": [
+            "Ben Connor",
+            "Trisha Clark"
+          ],
+          "draftSlot": 3
+        },
+        {
+          "name": "Team Savannah",
+          "owners": [
+            "Savannah Wheeler"
+          ],
+          "draftSlot": 4
+        },
+        {
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "draftSlot": 5
+        },
+        {
+          "name": "Spider-Ham",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "draftSlot": 6
+        },
+        {
+          "name": "PowderPuff Girls",
+          "owners": [
+            "Mia Connor",
+            "Landry Clark"
+          ],
+          "draftSlot": 7
+        },
+        {
+          "name": "Feel The Pain",
+          "owners": [
+            "Brian Clark"
+          ],
+          "draftSlot": 8
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "era": "pre",
+      "seasonLabel": "Year 3",
+      "leagueName": "ConnorClarkSmith Fantasy",
+      "teamCount": 10,
+      "draftSource": "Photo of the physical draft board",
+      "draftNote": "Transcribed from a photo of the draft board. Rounds are accurate; pick order within each round is not recorded.",
+      "champion": {
+        "team": "Peter Porker",
+        "owners": [
+          "Garrett Smith"
+        ]
+      },
+      "runnerUp": {
+        "team": "Trout Farm",
+        "owners": [
+          "Miles Clark"
+        ]
+      },
+      "lastPlace": {
+        "team": "Savage Rae",
+        "owners": [
+          "Savannah Wheeler"
+        ]
+      },
+      "teams": [
+        {
+          "name": "E.T.",
+          "owners": [
+            "Ella Connor",
+            "Trisha Clark"
+          ],
+          "boardColumn": 1
+        },
+        {
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "boardColumn": 2
+        },
+        {
+          "name": "PowderPuff Girls",
+          "owners": [
+            "Mia Connor",
+            "Landry Clark"
+          ],
+          "boardColumn": 3
+        },
+        {
+          "name": "SpicyFrozone223",
+          "owners": [
+            "Abram Vick"
+          ],
+          "boardColumn": 4
+        },
+        {
+          "name": "4Verts",
+          "owners": [
+            "Brian Clark",
+            "Graham Clark"
+          ],
+          "boardColumn": 5
+        },
+        {
+          "name": "Kansas City Cheeks",
+          "owners": [
+            "Kailee Smith",
+            "Sara Connor"
+          ],
+          "boardColumn": 6
+        },
+        {
+          "name": "Savage Rae",
+          "owners": [
+            "Savannah Wheeler"
+          ],
+          "boardColumn": 7
+        },
+        {
+          "name": "Indialantic Gonk Droids",
+          "owners": [
+            "Ben Connor"
+          ],
+          "boardColumn": 8
+        },
+        {
+          "name": "Peter Porker",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "boardColumn": 9
+        },
+        {
+          "name": "Trout Farm",
+          "owners": [
+            "Miles Clark"
+          ],
+          "boardColumn": 10
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "era": "scc",
+      "leagueName": "SCC League 2022",
+      "teamCount": 10,
+      "draftSource": "ESPN",
+      "playoffTeamCount": 6,
+      "standingsNote": "Playoff teams (top 6 seeds) are ordered by their playoff finish. Everyone else is ordered by regular-season standing \u2014 the consolation bracket is not counted.",
+      "champion": {
+        "team": "Team MaxLean",
+        "owners": [
+          "Timothy Hendrigsman"
+        ]
+      },
+      "runnerUp": {
+        "team": "Kansas City Cheeks",
+        "owners": [
+          "Sara Connor",
+          "Kailee Smith"
+        ]
+      },
+      "lastPlace": {
+        "team": "BrentHood Chief",
+        "owners": [
+          "James Connor"
+        ]
+      },
+      "teams": [
+        {
+          "espnTeamId": 10,
+          "name": "Team MaxLean",
+          "owners": [
+            "Timothy Hendrigsman"
+          ],
+          "abbrev": "MAX",
+          "espnFinalRank": 1,
+          "playoffSeed": 6,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 7,
+            "losses": 7,
+            "ties": 0,
+            "pointsFor": 1603.7,
+            "pointsAgainst": 1663.04
+          },
+          "finalRank": 1
+        },
+        {
+          "espnTeamId": 2,
+          "name": "Kansas City Cheeks",
+          "owners": [
+            "Sara Connor",
+            "Kailee Smith"
+          ],
+          "abbrev": "\ud83c\udf51",
+          "espnFinalRank": 2,
+          "playoffSeed": 1,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 10,
+            "losses": 4,
+            "ties": 0,
+            "pointsFor": 1870.74,
+            "pointsAgainst": 1688.88
+          },
+          "finalRank": 2
+        },
+        {
+          "espnTeamId": 8,
+          "name": "The other side Emerald Field",
+          "owners": [
+            "Ella Connor",
+            "Trisha Clark"
+          ],
+          "abbrev": "ETC",
+          "espnFinalRank": 3,
+          "playoffSeed": 5,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1725.8,
+            "pointsAgainst": 1675.74
+          },
+          "finalRank": 3
+        },
+        {
+          "espnTeamId": 5,
+          "name": "Teeny Monstars",
+          "owners": [
+            "Miles Clark"
+          ],
+          "abbrev": "Tem",
+          "espnFinalRank": 4,
+          "playoffSeed": 2,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 9,
+            "losses": 5,
+            "ties": 0,
+            "pointsFor": 1636.12,
+            "pointsAgainst": 1633.82
+          },
+          "finalRank": 4
+        },
+        {
+          "espnTeamId": 4,
+          "name": "Powder Puff Girlies",
+          "owners": [
+            "Mia Connor",
+            "Landry Clark"
+          ],
+          "abbrev": "PPG",
+          "espnFinalRank": 5,
+          "playoffSeed": 4,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1746.76,
+            "pointsAgainst": 1643.48
+          },
+          "finalRank": 5
+        },
+        {
+          "espnTeamId": 9,
+          "name": "Mar-a-Lago Nukes",
+          "owners": [
+            "Brian Clark"
+          ],
+          "abbrev": "MLN",
+          "espnFinalRank": 6,
+          "playoffSeed": 3,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 10,
+            "losses": 4,
+            "ties": 0,
+            "pointsFor": 1776.12,
+            "pointsAgainst": 1616.42
+          },
+          "finalRank": 6
+        },
+        {
+          "espnTeamId": 3,
+          "name": "Thicc Leonard",
+          "owners": [
+            "Ben Connor"
+          ],
+          "abbrev": "BJC",
+          "espnFinalRank": 9,
+          "playoffSeed": 7,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1594.12,
+            "pointsAgainst": 1721.1
+          },
+          "finalRank": 7
+        },
+        {
+          "espnTeamId": 1,
+          "name": "Amazing Fantasy Team",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "abbrev": "GDS",
+          "espnFinalRank": 7,
+          "playoffSeed": 8,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 4,
+            "losses": 10,
+            "ties": 0,
+            "pointsFor": 1559.36,
+            "pointsAgainst": 1623.82
+          },
+          "finalRank": 8
+        },
+        {
+          "espnTeamId": 7,
+          "name": "R2 Defenders",
+          "owners": [
+            "Graham Clark"
+          ],
+          "abbrev": "R2D2",
+          "espnFinalRank": 10,
+          "playoffSeed": 9,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 4,
+            "losses": 10,
+            "ties": 0,
+            "pointsFor": 1553.74,
+            "pointsAgainst": 1608.92
+          },
+          "finalRank": 9
+        },
+        {
+          "espnTeamId": 6,
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "abbrev": "BC",
+          "espnFinalRank": 8,
+          "playoffSeed": 10,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 4,
+            "losses": 10,
+            "ties": 0,
+            "pointsFor": 1508.62,
+            "pointsAgainst": 1699.86
+          },
+          "finalRank": 10
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "era": "scc",
+      "leagueName": "SCC League 2023",
+      "teamCount": 10,
+      "draftSource": "ESPN",
+      "playoffTeamCount": 6,
+      "standingsNote": "Playoff teams (top 6 seeds) are ordered by their playoff finish. Everyone else is ordered by regular-season standing \u2014 the consolation bracket is not counted.",
+      "champion": {
+        "team": "Mugshot Donny",
+        "owners": [
+          "Ben Connor"
+        ]
+      },
+      "runnerUp": {
+        "team": "The other side Emerald Field",
+        "owners": [
+          "Ella Connor",
+          "Trisha Clark"
+        ]
+      },
+      "lastPlace": {
+        "team": "Backwood Barbies",
+        "owners": [
+          "Landry Clark",
+          "Mia Connor"
+        ]
+      },
+      "teams": [
+        {
+          "espnTeamId": 3,
+          "name": "Mugshot Donny",
+          "owners": [
+            "Ben Connor"
+          ],
+          "abbrev": "BJC",
+          "espnFinalRank": 1,
+          "playoffSeed": 3,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1846.93,
+            "pointsAgainst": 1741.77
+          },
+          "finalRank": 1
+        },
+        {
+          "espnTeamId": 8,
+          "name": "The other side Emerald Field",
+          "owners": [
+            "Ella Connor",
+            "Trisha Clark"
+          ],
+          "abbrev": "ETC",
+          "espnFinalRank": 2,
+          "playoffSeed": 1,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 11,
+            "losses": 3,
+            "ties": 0,
+            "pointsFor": 1948.93,
+            "pointsAgainst": 1533.03
+          },
+          "finalRank": 2
+        },
+        {
+          "espnTeamId": 1,
+          "name": "Micro Vaughn",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "abbrev": "GDS",
+          "espnFinalRank": 3,
+          "playoffSeed": 2,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 10,
+            "losses": 4,
+            "ties": 0,
+            "pointsFor": 1891.18,
+            "pointsAgainst": 1697.26
+          },
+          "finalRank": 3
+        },
+        {
+          "espnTeamId": 5,
+          "name": "Teeny Monstars",
+          "owners": [
+            "Miles Clark"
+          ],
+          "abbrev": "Tem",
+          "espnFinalRank": 4,
+          "playoffSeed": 4,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1755.95,
+            "pointsAgainst": 1768.58
+          },
+          "finalRank": 4
+        },
+        {
+          "espnTeamId": 7,
+          "name": "R2 Defenders",
+          "owners": [
+            "Graham Clark"
+          ],
+          "abbrev": "R2D2",
+          "espnFinalRank": 5,
+          "playoffSeed": 6,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1638.38,
+            "pointsAgainst": 1737.77
+          },
+          "finalRank": 5
+        },
+        {
+          "espnTeamId": 6,
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor",
+            "Andrew Fischer"
+          ],
+          "abbrev": "BC",
+          "espnFinalRank": 6,
+          "playoffSeed": 5,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 7,
+            "losses": 7,
+            "ties": 0,
+            "pointsFor": 1704.54,
+            "pointsAgainst": 1631.07
+          },
+          "finalRank": 6
+        },
+        {
+          "espnTeamId": 10,
+          "name": "Team MaxLean",
+          "owners": [
+            "Timothy Hendrigsman"
+          ],
+          "abbrev": "MAX",
+          "espnFinalRank": 8,
+          "playoffSeed": 7,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1579.53,
+            "pointsAgainst": 1682.67
+          },
+          "finalRank": 7
+        },
+        {
+          "espnTeamId": 9,
+          "name": "I'm Just Ken",
+          "owners": [
+            "Brian Clark"
+          ],
+          "abbrev": "IJK",
+          "espnFinalRank": 10,
+          "playoffSeed": 8,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1697.31,
+            "pointsAgainst": 1802.26
+          },
+          "finalRank": 8
+        },
+        {
+          "espnTeamId": 2,
+          "name": "Back That Pass Up",
+          "owners": [
+            "Kailee Smith",
+            "Sara Connor"
+          ],
+          "abbrev": "\ud83c\udf51",
+          "espnFinalRank": 9,
+          "playoffSeed": 9,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1453.23,
+            "pointsAgainst": 1722.43
+          },
+          "finalRank": 9
+        },
+        {
+          "espnTeamId": 4,
+          "name": "Backwood Barbies",
+          "owners": [
+            "Landry Clark",
+            "Mia Connor"
+          ],
+          "abbrev": "BB",
+          "espnFinalRank": 7,
+          "playoffSeed": 10,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 4,
+            "losses": 10,
+            "ties": 0,
+            "pointsFor": 1596.54,
+            "pointsAgainst": 1795.68
+          },
+          "finalRank": 10
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "era": "scc",
+      "leagueName": "SCC League 2024",
+      "teamCount": 10,
+      "draftSource": "ESPN",
+      "playoffTeamCount": 6,
+      "standingsNote": "Playoff teams (top 6 seeds) are ordered by their playoff finish. Everyone else is ordered by regular-season standing \u2014 the consolation bracket is not counted.",
+      "champion": {
+        "team": "Shot Donny",
+        "owners": [
+          "Ben Connor"
+        ]
+      },
+      "runnerUp": {
+        "team": "Ducktor Doom",
+        "owners": [
+          "Garrett Smith"
+        ]
+      },
+      "lastPlace": {
+        "team": "We're Just Girls",
+        "owners": [
+          "Landry Clark",
+          "Mia Connor"
+        ]
+      },
+      "teams": [
+        {
+          "espnTeamId": 3,
+          "name": "Shot Donny",
+          "owners": [
+            "Ben Connor"
+          ],
+          "abbrev": "BJC",
+          "espnFinalRank": 1,
+          "playoffSeed": 2,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 9,
+            "losses": 5,
+            "ties": 0,
+            "pointsFor": 1821.31,
+            "pointsAgainst": 1682.49
+          },
+          "finalRank": 1
+        },
+        {
+          "espnTeamId": 1,
+          "name": "Ducktor Doom",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "abbrev": "GDS",
+          "espnFinalRank": 2,
+          "playoffSeed": 5,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1723.06,
+            "pointsAgainst": 1701.63
+          },
+          "finalRank": 2
+        },
+        {
+          "espnTeamId": 9,
+          "name": "NFL QB Ken",
+          "owners": [
+            "Brian Clark"
+          ],
+          "abbrev": "NQK",
+          "espnFinalRank": 3,
+          "playoffSeed": 6,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1718.43,
+            "pointsAgainst": 1622.36
+          },
+          "finalRank": 3
+        },
+        {
+          "espnTeamId": 6,
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "abbrev": "BC",
+          "espnFinalRank": 4,
+          "playoffSeed": 1,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 12,
+            "losses": 2,
+            "ties": 0,
+            "pointsFor": 1861.24,
+            "pointsAgainst": 1542.2
+          },
+          "finalRank": 4
+        },
+        {
+          "espnTeamId": 10,
+          "name": "Demure Lil Chief",
+          "owners": [
+            "Andrew Fischer"
+          ],
+          "abbrev": "DLC",
+          "espnFinalRank": 5,
+          "playoffSeed": 3,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 9,
+            "losses": 5,
+            "ties": 0,
+            "pointsFor": 1746.27,
+            "pointsAgainst": 1646.54
+          },
+          "finalRank": 5
+        },
+        {
+          "espnTeamId": 8,
+          "name": "Hurts don't it?",
+          "owners": [
+            "Ella Connor",
+            "Trisha Clark"
+          ],
+          "abbrev": "ETC",
+          "espnFinalRank": 6,
+          "playoffSeed": 4,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 7,
+            "losses": 7,
+            "ties": 0,
+            "pointsFor": 1686.11,
+            "pointsAgainst": 1686.17
+          },
+          "finalRank": 6
+        },
+        {
+          "espnTeamId": 5,
+          "name": "Teeny Monstars",
+          "owners": [
+            "Miles Clark"
+          ],
+          "abbrev": "Tem",
+          "espnFinalRank": 9,
+          "playoffSeed": 7,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1652.79,
+            "pointsAgainst": 1668.19
+          },
+          "finalRank": 7
+        },
+        {
+          "espnTeamId": 2,
+          "name": "Kansas City Cheeks",
+          "owners": [
+            "Kailee Smith",
+            "Sara Connor"
+          ],
+          "abbrev": "\ud83c\udf51",
+          "espnFinalRank": 7,
+          "playoffSeed": 8,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1531.42,
+            "pointsAgainst": 1806.3
+          },
+          "finalRank": 8
+        },
+        {
+          "espnTeamId": 7,
+          "name": "R2 Defenders",
+          "owners": [
+            "Graham Clark"
+          ],
+          "abbrev": "R2D2",
+          "espnFinalRank": 8,
+          "playoffSeed": 9,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1494.41,
+            "pointsAgainst": 1604.12
+          },
+          "finalRank": 9
+        },
+        {
+          "espnTeamId": 4,
+          "name": "We're Just Girls",
+          "owners": [
+            "Landry Clark",
+            "Mia Connor"
+          ],
+          "abbrev": "ML",
+          "espnFinalRank": 10,
+          "playoffSeed": 10,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1400.52,
+            "pointsAgainst": 1675.56
+          },
+          "finalRank": 10
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "era": "scc",
+      "leagueName": "SCC League 2025",
+      "teamCount": 10,
+      "draftSource": "ESPN",
+      "playoffTeamCount": 6,
+      "standingsNote": "Playoff teams (top 6 seeds) are ordered by their playoff finish. Everyone else is ordered by regular-season standing \u2014 the consolation bracket is not counted.",
+      "champion": {
+        "team": "BrentHood Chief",
+        "owners": [
+          "James Connor"
+        ]
+      },
+      "runnerUp": {
+        "team": "Emperor Donny",
+        "owners": [
+          "Ben Connor"
+        ]
+      },
+      "lastPlace": {
+        "team": "R2 Defenders",
+        "owners": [
+          "Graham Clark"
+        ]
+      },
+      "teams": [
+        {
+          "espnTeamId": 6,
+          "name": "BrentHood Chief",
+          "owners": [
+            "James Connor"
+          ],
+          "abbrev": "BC",
+          "espnFinalRank": 1,
+          "playoffSeed": 2,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1803.5,
+            "pointsAgainst": 1648.15
+          },
+          "finalRank": 1
+        },
+        {
+          "espnTeamId": 3,
+          "name": "Emperor Donny",
+          "owners": [
+            "Ben Connor"
+          ],
+          "abbrev": "BJC",
+          "espnFinalRank": 2,
+          "playoffSeed": 5,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1680.91,
+            "pointsAgainst": 1650.6
+          },
+          "finalRank": 2
+        },
+        {
+          "espnTeamId": 4,
+          "name": "We're Just Girls",
+          "owners": [
+            "Landry Clark",
+            "Mia Connor"
+          ],
+          "abbrev": "ML",
+          "espnFinalRank": 3,
+          "playoffSeed": 6,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1628.55,
+            "pointsAgainst": 1797.38
+          },
+          "finalRank": 3
+        },
+        {
+          "espnTeamId": 9,
+          "name": "Taylor Kelce Getaway Car",
+          "owners": [
+            "Brian Clark"
+          ],
+          "abbrev": "TKGC",
+          "espnFinalRank": 4,
+          "playoffSeed": 1,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 10,
+            "losses": 4,
+            "ties": 0,
+            "pointsFor": 1714.04,
+            "pointsAgainst": 1491.94
+          },
+          "finalRank": 4
+        },
+        {
+          "espnTeamId": 1,
+          "name": "Dogpool",
+          "owners": [
+            "Garrett Smith"
+          ],
+          "abbrev": "GDS",
+          "espnFinalRank": 5,
+          "playoffSeed": 3,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1791.81,
+            "pointsAgainst": 1636.23
+          },
+          "finalRank": 5
+        },
+        {
+          "espnTeamId": 5,
+          "name": "Teeny Monstars",
+          "owners": [
+            "Miles Clark"
+          ],
+          "abbrev": "Tem",
+          "espnFinalRank": 6,
+          "playoffSeed": 4,
+          "madePlayoffs": true,
+          "record": {
+            "wins": 8,
+            "losses": 6,
+            "ties": 0,
+            "pointsFor": 1785.55,
+            "pointsAgainst": 1684.2
+          },
+          "finalRank": 6
+        },
+        {
+          "espnTeamId": 10,
+          "name": "Demure Lil Chief",
+          "owners": [
+            "Andrew Fischer"
+          ],
+          "abbrev": "DLC",
+          "espnFinalRank": 8,
+          "playoffSeed": 7,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1580.02,
+            "pointsAgainst": 1748.46
+          },
+          "finalRank": 7
+        },
+        {
+          "espnTeamId": 8,
+          "name": "Hurts don't it?",
+          "owners": [
+            "Ella Connor",
+            "Trisha Clark"
+          ],
+          "abbrev": "ETC",
+          "espnFinalRank": 9,
+          "playoffSeed": 8,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 6,
+            "losses": 8,
+            "ties": 0,
+            "pointsFor": 1525.75,
+            "pointsAgainst": 1586.39
+          },
+          "finalRank": 8
+        },
+        {
+          "espnTeamId": 2,
+          "name": "Kansas City Cheeks",
+          "owners": [
+            "Kailee Smith",
+            "Sara Connor"
+          ],
+          "abbrev": "\ud83c\udf51",
+          "espnFinalRank": 7,
+          "playoffSeed": 9,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1619.79,
+            "pointsAgainst": 1761.96
+          },
+          "finalRank": 9
+        },
+        {
+          "espnTeamId": 7,
+          "name": "R2 Defenders",
+          "owners": [
+            "Graham Clark"
+          ],
+          "abbrev": "R2D2",
+          "espnFinalRank": 10,
+          "playoffSeed": 10,
+          "madePlayoffs": false,
+          "record": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0,
+            "pointsFor": 1565.06,
+            "pointsAgainst": 1689.67
+          },
+          "finalRank": 10
+        }
+      ]
+    }
+  ]
+}
