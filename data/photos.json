@@ -1,24 +1,20 @@
 {
-  "_readme": [
-    "HOW TO ADD PHOTOS AND VIDEOS:",
-    "1. Put the file in photos/<year>/  (e.g. photos/2019/draft-night.jpg or celebration.mp4).",
-    "2. Add the file name to that year's list below. Caption is optional.",
-    "3. Commit and push. The gallery picks it up automatically.",
-    "Photos: .jpg .png .gif  |  Videos: .mp4 (recommended), .webm, .m4v",
-    "iPhone .mov files should be converted to .mp4 - Chrome and Android often cannot play .mov.",
-    "Keep videos under ~50 MB; GitHub warns above that and hard-blocks at 100 MB.",
-    "Videos may optionally have a poster image: {\"file\": \"clip.mp4\", \"poster\": \"clip-thumb.jpg\"}",
-    "Example: \"2019\": [ { \"file\": \"draft-night.jpg\", \"caption\": \"Round 1 chaos\" } ]"
-  ],
   "2019": [],
   "2020": [],
   "2021": [
     {
       "file": "draft-board.jpg",
       "caption": "The 2021 draft board"
-    }
+    },
+    {
+      "file": "2021-group-photo.jpg",
+      "caption": "2021 Group Draft Photo"
+    }, 
+     {
+       "file": "cd0c1a87-bbab-4026-959d-beb3d9774dae.jpeg",
+       "caption": "<3 Chubb"
+     }
   ],
-  "2025": [],
   "2022": [
     {
       "file": "draft-board.jpg",
@@ -40,5 +36,18 @@
       "file": "draft-board.jpg",
       "caption": "The 2024 draft board"
     }
+  ],
+  "2025": [],
+  
+  "_readme": [
+    "HOW TO ADD PHOTOS AND VIDEOS:",
+    "1. Put the file in photos/<year>/  (e.g. photos/2019/draft-night.jpg or celebration.mp4).",
+    "2. Add the file name to that year's list below. Caption is optional.",
+    "3. Commit and push. The gallery picks it up automatically.",
+    "Photos: .jpg .png .gif  |  Videos: .mp4 (recommended), .webm, .m4v",
+    "iPhone .mov files should be converted to .mp4 - Chrome and Android often cannot play .mov.",
+    "Keep videos under ~50 MB; GitHub warns above that and hard-blocks at 100 MB.",
+    "Videos may optionally have a poster image: {\"file\": \"clip.mp4\", \"poster\": \"clip-thumb.jpg\"}",
+    "Example: \"2019\": [ { \"file\": \"draft-night.jpg\", \"caption\": \"Round 1 chaos\" } ]"
   ]
 }

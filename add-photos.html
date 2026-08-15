@@ -111,10 +111,10 @@
 
     <h2>Activity</h2>
     <div class="log" id="log">Waiting…</div>
-    <p class="note">After saving, commit and push the <code>photos</code> folder and
-      <code>data/photos.json</code> to GitHub. If you use the offline
-      <code>SCC-Fantasy-History.html</code> file, re-run <code>build_standalone.py</code> so it
-      picks up the new files.</p>
+    <p class="note"><b>To publish:</b> open GitHub Desktop, type a short summary
+      (e.g. &ldquo;2025 draft photos&rdquo;), click <b>Commit to main</b>, then <b>Push origin</b>.
+      Live in about a minute. Step-by-step in <code>HOW-TO-PUBLISH.md</code>.<br>
+      The offline <code>SCC-Fantasy-History.html</code> file is updated automatically too.</p>
   </div>
 
 </div></main>
@@ -184,6 +184,8 @@
       $("#folderState").style.color = "var(--ink)";
       log("Connected to " + handle.name + "/", "ok");
       await loadYears(dataDir);
+      // if photos.json was hand-edited, push those edits into the offline copy now
+      await refreshStandalone(true);
       refreshExisting();
       refreshSave();
     } catch (e) {
@@ -314,6 +316,41 @@
     var w = await fh.createWritable();
     await w.write(JSON.stringify(photosJson, null, 2));
     await w.close();
+    await refreshStandalone();
+  }
+
+  /* SCC-Fantasy-History.html has the JSON baked in, so editing photos.json alone
+     would leave the offline copy stale. Splice the new data straight into it. */
+  async function refreshStandalone(quiet) {
+    var fh;
+    try {
+      fh = await root.getFileHandle("SCC-Fantasy-History.html");
+    } catch (e) {
+      return;                       // offline copy isn't there; nothing to do
+    }
+    try {
+      var text = await (await fh.getFile()).text();
+      var START = "window.SCC_DATA=", END = ";/*SCC_DATA_END*/";
+      var a = text.indexOf(START), b = text.indexOf(END, a);
+      if (a < 0 || b < 0) {
+        log("Note: couldn't refresh SCC-Fantasy-History.html — re-run build_standalone.py to update it.", "bad");
+        return;
+      }
+      var blob = JSON.parse(text.slice(a + START.length, b));
+      blob["data/photos.json"] = photosJson;
+      var updated = text.slice(0, a + START.length) +
+        JSON.stringify(blob).replace(/<\//g, "<\\/") +
+        text.slice(b);
+      if (quiet && updated === text) return;      // already in sync, say nothing
+      var w = await fh.createWritable();
+      await w.write(updated);
+      await w.close();
+      log(quiet
+        ? "Synced SCC-Fantasy-History.html with data/photos.json."
+        : "Refreshed SCC-Fantasy-History.html too.", "ok");
+    } catch (e) {
+      log("Note: couldn't refresh SCC-Fantasy-History.html (" + e.message + ").", "bad");
+    }
   }
 
   $("#save").onclick = async function () {

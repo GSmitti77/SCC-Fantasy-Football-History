@@ -1,91 +1,122 @@
-# Getting the site working
+# Getting the site online, and keeping it updated
 
-Two options. Start with #1 — it takes 10 seconds and needs nothing installed.
+Three sections: look at it locally, publish it once, then update it forever after.
 
 ---
 
-## Option 1 — Just look at it (no setup)
+## 1 · Just look at it (no setup at all)
 
 1. Unzip `scc-fantasy-history.zip`.
 2. Open the `site` folder.
 3. **Double-click `SCC-Fantasy-History.html`.**
 
-That's it. It opens in your browser and everything works — all seven seasons,
-draft boards, photos.
+It opens in your browser and everything works. Keep the `photos` folder next to it.
 
-This is a single self-contained file with all the data baked in. You can email it
-to the league or drop it in a shared folder. The only rule: **keep the `photos`
-folder next to it**, or the gallery images won't show.
-
-> Don't double-click `index.html` — it will look broken and say it can't load
-> league data. That file is for web hosting, where the data loads separately.
-> `SCC-Fantasy-History.html` is the one for opening directly.
+> Don't double-click `index.html` — it'll say it can't load league data. That file is
+> for web hosting. `SCC-Fantasy-History.html` is the one for opening directly.
 
 ---
 
-## Option 2 — Put it on the web (GitHub Pages, free)
+## 2 · Publish it (one-time setup, ~10 minutes)
 
-Gives you a real link like `https://yourname.github.io/scc-fantasy/` that anyone
-in the league can bookmark. No terminal needed — all of this is drag-and-drop.
+### What "commit" and "push" actually mean
+
+GitHub stores your site. Getting changes from your Mac up to GitHub is two steps:
+
+- **Commit** = save a snapshot of what you changed, with a short label like
+  *"added 2025 draft photos"*. It's still only on your computer.
+- **Push** = upload those snapshots to GitHub. This is what makes the live site update.
+
+You don't need the terminal. **GitHub Desktop** does both with buttons.
 
 ### Step 1 — Make a GitHub account
-Go to <https://github.com> and sign up if you don't have one. Free tier is fine.
+Sign up at <https://github.com>. Free.
 
-### Step 2 — Create a repository
-1. Click the **+** in the top-right → **New repository**.
-2. Repository name: `scc-fantasy` (or anything you like — it becomes part of the URL).
-3. Set it to **Public**. *(GitHub Pages requires public on the free plan.)*
-4. Leave every checkbox unticked. Click **Create repository**.
+### Step 2 — Install GitHub Desktop
+Download from <https://desktop.github.com>, install, and sign in with that account.
 
-### Step 3 — Upload the files
-1. On the new empty repo page, click **uploading an existing file**.
-2. Open your unzipped `site` folder in Finder.
-3. Select **everything inside** `site` — `index.html`, `assets`, `data`, `photos`,
-   and the rest — and drag it all into the browser window.
+### Step 3 — Create the repository
+1. In GitHub Desktop: **File → New Repository…**
+2. **Name:** `scc-fantasy` (this becomes part of your web address)
+3. **Local Path:** pick where it goes, e.g. your Documents folder
+4. Leave everything else alone. Click **Create Repository**.
 
-   ⚠️ Drag the **contents** of `site`, not the `site` folder itself. `index.html`
-   must land at the top level of the repo, not inside a subfolder.
-4. Wait for the uploads to finish (the photos take a moment), then click
-   **Commit changes**.
+GitHub Desktop just made a folder — for example `Documents/scc-fantasy`.
 
-### Step 4 — Turn on Pages
-1. In the repo, click **Settings** (top row).
-2. Click **Pages** in the left sidebar.
-3. Under **Source**, choose **Deploy from a branch**.
-4. Branch: **main**, folder: **/ (root)**. Click **Save**.
+### Step 4 — Put the site files in it
+Open that new `scc-fantasy` folder in Finder. Copy in **everything inside** your
+`site` folder — `index.html`, `add-photos.html`, `assets`, `data`, `photos`, and the rest.
 
-### Step 5 — Wait, then visit
-Give it 1–2 minutes. Refresh the Settings → Pages screen and your link appears at
-the top. That's the URL to share.
+⚠️ The **contents** of `site`, not the `site` folder itself. `index.html` has to sit at
+the top level of `scc-fantasy`, or the site won't load.
+
+### Step 5 — Your first commit and push
+Switch back to GitHub Desktop. It now lists every file you copied in.
+
+1. Bottom-left, in the **Summary** box, type: `initial site`
+2. Click **Commit to main**
+3. Top of the window, click **Publish repository**
+4. **Untick "Keep this code private"** — GitHub Pages needs it public on the free plan
+5. Click **Publish repository**
+
+### Step 6 — Turn on GitHub Pages
+1. In GitHub Desktop: **Repository → View on GitHub** (opens your browser)
+2. Click **Settings** → **Pages** in the left sidebar
+3. **Source:** Deploy from a branch · **Branch:** `main` · **Folder:** `/ (root)` → **Save**
+4. Wait 1–2 minutes, refresh. Your link appears at the top of that page.
+
+That's the URL to send the league.
 
 ---
 
-## Updating it later
+## 3 · Updating it later (this is the part you'll actually repeat)
 
-**Adding photos or videos — the easy way.** Open **`add-photos.html`** from your
-site folder (there's also a link in the site's footer). Then:
+Say you just added photos with `add-photos.html`. To publish them:
 
-1. Click **Choose site folder…** and pick the `site` folder. Chrome asks permission
-   to edit it — that's expected, and nothing leaves your computer.
+1. Open **GitHub Desktop**. It automatically shows what changed — your new photos and
+   the updated `data/photos.json`.
+2. Type a short summary, e.g. `2025 draft photos`.
+3. Click **Commit to main**.
+4. Click **Push origin** at the top.
+
+Live in about a minute. That's the whole loop: **Commit → Push**.
+
+> **One catch:** `add-photos.html` writes into whatever folder you connected it to.
+> Point it at your `scc-fantasy` repo folder, *not* a separate copy of `site`, or your
+> changes won't show up in GitHub Desktop. Easiest fix: after Step 4 above, delete the
+> old `site` folder so there's only one copy to get confused about.
+
+### Adding photos and videos
+
+Open **`add-photos.html`** (also linked in the site's footer):
+
+1. **Choose site folder…** → pick your `scc-fantasy` folder. Chrome will ask permission
+   to edit it — expected, and nothing leaves your computer.
 2. Pick the season.
-3. Drag your photos and videos onto the drop zone. Add captions if you want.
-4. Click **Save to the site**.
+3. Drag photos and videos in. Add captions if you like.
+4. **Save to the site**, then Commit → Push in GitHub Desktop.
 
-It copies the files into `photos/<year>/` and updates `data/photos.json` for you, so
-you never touch JSON. It also tidies filenames (`Draft Night 2019.JPG` becomes
-`draft-night-2019.jpg`), warns about files GitHub will reject, and won't overwrite an
-existing photo — a name clash gets saved under a new name instead. You can also remove
-an item from a gallery there.
+It copies files into `photos/<year>/` and updates `data/photos.json` for you, tidies
+filenames, warns about anything GitHub will reject, and won't overwrite an existing
+photo. You can also remove items from a gallery there.
 
-Then commit and push the `photos` folder and `data/photos.json` to GitHub.
+It also keeps **`SCC-Fantasy-History.html`** (the offline double-click copy) in sync —
+that file has the data baked inside it, so editing `photos.json` alone would leave it
+showing the old list. Just connecting the folder is enough to re-sync it, which is the
+fix if you ever edit the JSON by hand.
 
-> **Chrome or Edge only.** Safari and Firefox don't support the folder-access feature
-> this needs; the page will tell you if your browser can't do it. If Chrome refuses when
-> you open the file directly, run `python3 -m http.server 8000` in the site folder and
-> visit `http://localhost:8000/add-photos.html` instead.
+> **Chrome or Edge only.** Safari and Firefox don't support the folder-access feature.
+> If Chrome refuses when you open the file directly, run `python3 -m http.server 8000`
+> in the folder and visit `http://localhost:8000/add-photos.html`.
 
-**Adding them by hand instead** — drag files into `photos/<year>/` on github.com, then
-edit `data/photos.json` and add the filenames:
+Video rules: use **`.mp4`**. Convert iPhone `.mov` files (QuickTime → File → Export As →
+1080p). Keep clips under ~50 MB — GitHub warns above that and refuses over 100 MB.
+
+### Adding photos without any of the above
+
+You can skip GitHub Desktop entirely: on github.com, open `photos/<year>`, click
+**Add file → Upload files**, drag them in, **Commit changes**. Then open
+`data/photos.json`, click the pencil ✏️, add the filenames, and commit again.
 
 ```json
 "2019": [
@@ -94,18 +125,9 @@ edit `data/photos.json` and add the filenames:
 ]
 ```
 
-Videos sit in the same gallery as photos, with a ▶ badge; clicking one opens it
-full-screen with normal playback controls. A few rules:
+### Adding next season
 
-- **Use `.mp4`.** It plays everywhere. `.webm` and `.m4v` also work.
-- **Convert iPhone `.mov` files to `.mp4`** — Chrome and Android often can't play `.mov`.
-  On a Mac, open it in QuickTime → File → Export As → 1080p, which writes an `.mp4`.
-- **Keep clips under ~50 MB.** GitHub warns above that and refuses files over 100 MB.
-- Optional: give a video a custom thumbnail with
-  `{ "file": "clip.mp4", "poster": "clip-thumb.jpg" }`.
-
-**Adding next season** — see `README.md` for the two-command recipe. Send me the
-ESPN league JSON and the Draft Recap PDF and I'll do it.
+See `README.md`. Or just send me the ESPN league JSON and the Draft Recap PDF.
 
 ---
 
@@ -113,11 +135,14 @@ ESPN league JSON and the Draft Recap PDF and I'll do it.
 
 | What you see | Why | Fix |
 |---|---|---|
-| Page says "Could not load league data" | You opened `index.html` directly | Open `SCC-Fantasy-History.html` instead, or host it |
-| GitHub Pages shows a 404 | `index.html` is in a subfolder | Re-upload the *contents* of `site`, not the folder |
-| Page loads but no photos | `photos` folder missing or not uploaded | Upload the `photos` folder too |
-| A video shows a black box | Usually a `.mov` file | Convert it to `.mp4` and re-upload |
-| GitHub refuses a video upload | File is over 100 MB | Trim or compress it first |
+| "Could not load league data" | You opened `index.html` directly | Open `SCC-Fantasy-History.html`, or view the published site |
+| GitHub Pages shows a 404 | `index.html` is in a subfolder | Move the *contents* of `site` to the top level of the repo |
 | Pages link doesn't work yet | First build takes a minute or two | Wait and refresh |
-| "This browser can't write files" | You're in Safari or Firefox | Use Chrome or Edge |
-| Add-photos page won't open the folder picker | Chrome blocked it on a `file://` page | Run `python3 -m http.server 8000` and use `localhost` |
+| Site loads but no photos | The `photos` folder wasn't copied in | Copy it into the repo folder, then Commit → Push |
+| GitHub Desktop shows no changes | `add-photos.html` wrote to a different folder | Reconnect it to your repo folder |
+| "Publish repository" is greyed out | Nothing committed yet | Write a summary and click **Commit to main** first |
+| A video shows a black box | Usually a `.mov` file | Convert to `.mp4` and re-add |
+| GitHub refuses a file | Over 100 MB | Trim or compress it |
+| "This browser can't write files" | Safari or Firefox | Use Chrome or Edge |
+| Edited `photos.json` by hand and `SCC-Fantasy-History.html` didn't change | That file has the data baked in | Open `add-photos.html` and connect the folder — it syncs automatically |
+| Push button says you're behind | Edited on github.com and locally | Click **Pull origin** first, then push |
