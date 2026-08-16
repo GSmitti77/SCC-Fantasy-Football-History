@@ -37,6 +37,9 @@ Doing it by hand instead:
 
 3. Commit and push. The gallery picks them up automatically.
 
+Every season tab has its own gallery, and the **Photos** tab collects everything in one
+place grouped by season, newest first, with jump-to-year chips.
+
 Images (`.jpg .png .gif`) and videos (`.mp4 .webm .m4v .ogv`) share one gallery —
 the type is detected from the file extension. Videos render with a ▶ badge and open
 in the lightbox with playback controls; add `"poster": "thumb.jpg"` to control the

@@ -186,3 +186,22 @@ h1.title span{color:var(--blue-lt)}
 }
 .gallery figure.vid .thumb:hover .play{background:radial-gradient(circle at center, rgba(8,21,37,.5) 0%, rgba(8,21,37,.15) 60%)}
 #lightbox video{max-width:100%;max-height:100%;border-radius:8px;background:#000;cursor:default}
+
+/* ---------- all-photos tab ---------- */
+.yearjump{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.yearjump a{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:650;text-decoration:none;
+  background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:5px 13px;color:var(--muted);
+}
+.yearjump a:hover{background:#12294a;color:var(--ink);border-color:var(--blue)}
+.yearjump a span{
+  font-size:11px;font-weight:700;background:var(--blue-dk);color:#fff;
+  border-radius:99px;padding:1px 7px;min-width:20px;text-align:center;
+}
+.yearhead{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  margin:30px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px;
+}
+.yearhead h3{margin:0;font-size:19px;color:var(--ink);text-transform:none;letter-spacing:-.2px}
+.yearhead a{text-decoration:none;font-size:13px;white-space:nowrap}
+.yearhead a:hover{color:var(--blue-lt)}

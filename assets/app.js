@@ -70,6 +70,7 @@
     var nav = $("#tabs");
     nav.appendChild(tabBtn("overview", "Overview"));
     nav.appendChild(tabBtn("owners", "Managers"));
+    nav.appendChild(tabBtn("photos", "Photos"));
 
     ["pre", "scc"].forEach(function (key) {
       var seasons = L.seasons.filter(function (s) { return s.era === key; })
@@ -157,6 +158,7 @@
     root.innerHTML = "";
     root.appendChild(viewOverview());
     root.appendChild(viewManagers());
+    root.appendChild(viewPhotos());
     L.seasons.slice().sort(function (a, b) { return a.year - b.year; })
       .forEach(function (s) { root.appendChild(viewSeason(s)); });
   }
@@ -304,6 +306,64 @@
       "</b><span>" + esc(label) + "</span></div>";
   }
   function slug(n) { return String(n).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+  /* ----- All photos, grouped by season ----- */
+  function mediaCounts() {
+    var photos = 0, videos = 0, years = [];
+    Object.keys(PHOTOS).forEach(function (k) {
+      if (!/^\d{4}$/.test(k)) return;                 // skip _readme etc.
+      var list = PHOTOS[k] || [];
+      if (!list.length) return;
+      years.push(k);
+      list.forEach(function (m) { isVideo(m.file) ? videos++ : photos++; });
+    });
+    years.sort().reverse();
+    return { photos: photos, videos: videos, years: years };
+  }
+
+  function viewPhotos() {
+    var v = section("photos");
+    var c = mediaCounts();
+
+    v.appendChild(el("h2", "", "Photos &amp; Videos"));
+    if (!c.years.length) {
+      v.appendChild(el("div", "empty",
+        "No photos or videos yet.<br><br>" +
+        "Open <a href='add-photos.html'>Add Photos &amp; Videos</a> and drag some in."));
+      return v;
+    }
+
+    var bits = [];
+    if (c.photos) bits.push("<b>" + c.photos + "</b> photo" + (c.photos === 1 ? "" : "s"));
+    if (c.videos) bits.push("<b>" + c.videos + "</b> video" + (c.videos === 1 ? "" : "s"));
+    v.appendChild(el("p", "note",
+      bits.join(" and ") + " across " + c.years.length + " season" +
+      (c.years.length === 1 ? "" : "s") + ". Newest first."));
+
+    // quick jump chips
+    var jump = el("div", "yearjump");
+    c.years.forEach(function (y) {
+      var a = el("a", "", y + " <span>" + (PHOTOS[y] || []).length + "</span>");
+      a.href = "#photos-" + y;
+      a.onclick = function (e) {
+        e.preventDefault();
+        var t = document.getElementById("photos-" + y);
+        if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+      jump.appendChild(a);
+    });
+    v.appendChild(jump);
+
+    c.years.forEach(function (y) {
+      var head = el("div", "yearhead");
+      head.id = "photos-" + y;
+      head.innerHTML = "<h3>" + y + "</h3>" +
+        "<a class='oname' href='#y" + y + "'>Go to the " + y + " season →</a>";
+      v.appendChild(head);
+      v.appendChild(gallery(y));
+    });
+    return v;
+  }
 
   /* ----- Season ----- */
   function viewSeason(s) {
