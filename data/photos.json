@@ -9,11 +9,23 @@
     {
       "file": "2021-group-photo.jpg",
       "caption": "2021 Group Draft Photo"
-    }, 
-     {
-       "file": "chubb.jpg",
-       "caption": "<3 Chubb"
-     }
+    },
+    {
+      "file": "chubb.jpg",
+      "caption": "<3 Chubb"
+    },
+    {
+      "file": "draft-day-group.jpg",
+      "caption": "Draft day 2021"
+    },
+    {
+      "file": "draft-day-group-doodles.jpg",
+      "caption": "Draft day 2021 \u2014 with the absentees drawn in"
+    },
+    {
+      "file": "board-on-the-wall.jpg",
+      "caption": "The finished 2021 board"
+    }
   ],
   "2022": [
     {
@@ -23,22 +35,113 @@
     {
       "file": "draft-day-crew.jpg",
       "caption": "Draft day, August 21, 2022"
+    },
+    {
+      "file": "yorkie-watching.jpg",
+      "caption": "Supervising the day before the 2022 draft"
+    },
+    {
+      "file": "westie.jpg",
+      "caption": "Draft day 2022"
+    },
+    {
+      "file": "trophy-lift.jpg",
+      "caption": "The trophy gets a lift, 2022 draft day"
+    },
+    {
+      "file": "draft-day-group.jpg",
+      "caption": "Draft day 2022, board and trophy"
+    },
+    {
+      "file": "board-duo.jpg",
+      "caption": "Holding up the full 2022 board"
+    },
+    {
+      "file": "red-glasses.jpg",
+      "caption": "November 2022"
+    },
+    {
+      "file": "titans-game.jpg",
+      "caption": "Titans game, Christmas Eve 2022"
+    },
+    {
+      "file": "draft-day-selfie.jpg",
+      "caption": "Drafting from the couch, 2022"
+    },
+    {
+      "file": "rankings-sheet-1.jpg",
+      "caption": "Miles's handwritten rankings \u2014 QBs, RBs, TEs, K, D/ST"
+    },
+    {
+      "file": "rankings-sheet-2.jpg",
+      "caption": "Miles's handwritten rankings \u2014 the rest of the RBs and WRs"
+    },
+    {
+      "file": "trophy-presented.jpg",
+      "caption": "Presenting the trophy, 2022 draft day"
+    },
+    {
+      "file": "trophy-kiss.jpg",
+      "caption": "Sealed with a kiss, 2022"
     }
   ],
   "2023": [
     {
       "file": "draft-board.jpg",
       "caption": "The 2023 draft board"
+    },
+    {
+      "file": "filling-the-board.jpg",
+      "caption": "Filling in the 2023 board"
+    },
+    {
+      "file": "watching-the-board.jpg",
+      "caption": "Watching the 2023 board fill up"
+    },
+    {
+      "file": "cheers.jpg",
+      "caption": "Cheers \u2014 September 2023"
+    },
+    {
+      "file": "draft-room.jpg",
+      "caption": "The room mid-draft, 2023"
+    },
+    {
+      "file": "draft-room-2.jpg",
+      "caption": "At the board, 2023"
     }
   ],
   "2024": [
     {
       "file": "draft-board.jpg",
       "caption": "The 2024 draft board"
+    },
+    {
+      "file": "draft-day-group.jpg",
+      "caption": "Draft day 2024"
+    },
+    {
+      "file": "couch-crew.jpg",
+      "caption": "Hanging out on draft day 2024"
+    },
+    {
+      "file": "wings.jpg",
+      "caption": "Wings on the couch, 2024 draft day"
+    },
+    {
+      "file": "kitchen-toast.jpg",
+      "caption": "Kitchen break, 2024 draft day"
+    },
+    {
+      "file": "kitchen-toast-2.jpg",
+      "caption": "Kitchen break, 2024 draft day"
+    },
+    {
+      "file": "doorway.jpg",
+      "caption": "2024 draft day"
     }
   ],
   "2025": [],
-  
   "_readme": [
     "HOW TO ADD PHOTOS AND VIDEOS:",
     "1. Put the file in photos/<year>/  (e.g. photos/2019/draft-night.jpg or celebration.mp4).",
