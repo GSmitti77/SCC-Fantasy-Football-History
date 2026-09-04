@@ -102,6 +102,7 @@
       <span style="font-size:12.5px">JPG · PNG · GIF · MP4 · WEBM · M4V</span>
     </div>
     <input type="file" id="filein" multiple accept="image/*,video/*" style="display:none">
+    <div id="suggest" style="display:none"></div>
     <ul class="queue" id="queue"></ul>
 
     <div class="row" style="margin-top:18px">
@@ -165,6 +166,119 @@
     return stem + ext;
   }
 
+
+  /* ---------- capture-date detection ----------
+     JPEG: EXIF DateTimeOriginal (APP1 segment). MP4/MOV: mvhd creation time.
+     Deliberately advisory only — a screenshot of an old photo carries the date the
+     screenshot was taken, so we suggest a season and let the user confirm. */
+  function readU16(dv, off, little) { return dv.getUint16(off, little); }
+  function readU32(dv, off, little) { return dv.getUint32(off, little); }
+
+  function exifDateFromJpeg(buf) {
+    var dv = new DataView(buf);
+    if (dv.byteLength < 4 || dv.getUint16(0) !== 0xFFD8) return null;   // not a JPEG
+    var off = 2;
+    while (off + 4 < dv.byteLength) {
+      if (dv.getUint8(off) !== 0xFF) break;
+      var marker = dv.getUint8(off + 1), size = dv.getUint16(off + 2);
+      if (marker === 0xE1) {                                            // APP1
+        var start = off + 4;
+        var tag = "";
+        for (var i = 0; i < 4; i++) tag += String.fromCharCode(dv.getUint8(start + i));
+        if (tag !== "Exif") return null;
+        return exifDateFromTiff(dv, start + 6);
+      }
+      if (marker === 0xDA) break;                                       // start of scan
+      off += 2 + size;
+    }
+    return null;
+  }
+
+  function exifDateFromTiff(dv, base) {
+    if (base + 8 > dv.byteLength) return null;
+    var bo = dv.getUint16(base);
+    var little = bo === 0x4949;
+    if (!little && bo !== 0x4D4D) return null;
+    if (readU16(dv, base + 2, little) !== 0x002A) return null;
+
+    function findTag(ifdOff, want) {
+      if (ifdOff + 2 > dv.byteLength) return null;
+      var n = readU16(dv, ifdOff, little), hit = null;
+      for (var i = 0; i < n; i++) {
+        var e = ifdOff + 2 + i * 12;
+        if (e + 12 > dv.byteLength) break;
+        if (readU16(dv, e, little) === want) hit = e;
+      }
+      return hit;
+    }
+    function asciiAt(entry) {
+      var count = readU32(dv, entry + 4, little);
+      var valOff = count > 4 ? base + readU32(dv, entry + 8, little) : entry + 8;
+      var out = "";
+      for (var i = 0; i < count - 1 && valOff + i < dv.byteLength; i++) {
+        out += String.fromCharCode(dv.getUint8(valOff + i));
+      }
+      return out;
+    }
+
+    var ifd0 = base + readU32(dv, base + 4, little);
+    var str = null;
+    var ptr = findTag(ifd0, 0x8769);                                    // Exif sub-IFD
+    if (ptr) {
+      var sub = base + readU32(dv, ptr + 8, little);
+      var orig = findTag(sub, 0x9003) || findTag(sub, 0x9004);          // DateTimeOriginal / Digitized
+      if (orig) str = asciiAt(orig);
+    }
+    if (!str) {
+      var dt = findTag(ifd0, 0x0132);                                   // plain DateTime
+      if (dt) str = asciiAt(dt);
+    }
+    if (!str) return null;
+    var m = str.match(/^(\d{4})[:\-](\d{2})[:\-](\d{2})/);
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  }
+
+  function mp4DateFromBuffer(buf) {
+    var dv = new DataView(buf);
+    function walk(start, end, depth) {
+      var off = start;
+      while (off + 8 <= end && depth < 5) {
+        var size = dv.getUint32(off);
+        var type = "";
+        for (var i = 0; i < 4; i++) type += String.fromCharCode(dv.getUint8(off + 4 + i));
+        if (size === 1) return null;                                    // 64-bit box, skip
+        if (size < 8) return null;
+        if (type === "moov" || type === "trak" || type === "mdia") {
+          var r = walk(off + 8, Math.min(off + size, end), depth + 1);
+          if (r) return r;
+        } else if (type === "mvhd" || type === "mdhd") {
+          var v = dv.getUint8(off + 8);
+          var secs = v === 1 ? Number(dv.getBigUint64(off + 12)) : dv.getUint32(off + 12);
+          if (secs > 0) {
+            // QuickTime epoch is 1904-01-01
+            var d = new Date((secs - 2082844800) * 1000);
+            if (d.getFullYear() > 1970 && d.getFullYear() < 2100) return d;
+          }
+        }
+        off += size;
+      }
+      return null;
+    }
+    return walk(0, dv.byteLength, 0);
+  }
+
+  function readMediaDate(file) {
+    // the header is all we need; never read a whole video into memory
+    var slice = file.slice(0, 256 * 1024);
+    return slice.arrayBuffer().then(function (buf) {
+      try {
+        if (/\.(jpe?g)$/i.test(file.name)) return exifDateFromJpeg(buf);
+        if (VIDEO.test(file.name)) return mp4DateFromBuffer(buf);
+      } catch (e) { /* malformed header - just give up quietly */ }
+      return null;
+    }).catch(function () { return null; });
+  }
+
   /* ---------- step 1: connect folder ---------- */
   $("#pick").onclick = async function () {
     try {
@@ -212,7 +326,7 @@
     years.sort().reverse();
     var sel = $("#year");
     sel.innerHTML = years.map(function (y) { return "<option>" + y + "</option>"; }).join("");
-    sel.onchange = refreshExisting;
+    sel.onchange = function () { refreshExisting(); suggestYear(); };
   }
 
   function refreshExisting() {
@@ -263,10 +377,48 @@
         log("Skipped " + f.name + " — already in the list.");
         return;
       }
-      queue.push({ file: f, name: name, caption: "" });
+      var item = { file: f, name: name, caption: "", taken: null };
+      queue.push(item);
+      readMediaDate(f).then(function (d) {
+        item.taken = d;
+        renderQueue();
+        suggestYear();
+      });
     });
     renderQueue();
     refreshSave();
+    suggestYear();
+  }
+
+  /* If every dated file points at one season, offer it as a one-click switch.
+     Never change the dropdown automatically — a screenshot of an old photo carries
+     the date it was screenshotted, which would file it under the wrong year. */
+  function suggestYear() {
+    var box = $("#suggest");
+    var years = {};
+    queue.forEach(function (q) {
+      if (q.taken) years[q.taken.getFullYear()] = (years[q.taken.getFullYear()] || 0) + 1;
+    });
+    var keys = Object.keys(years);
+    var options = Array.prototype.map.call($("#year").options, function (o) { return o.value; });
+    if (keys.length !== 1 || keys[0] === $("#year").value || options.indexOf(keys[0]) < 0) {
+      box.innerHTML = "";
+      box.style.display = "none";
+      return;
+    }
+    var y = keys[0], n = years[y];
+    box.style.display = "";
+    box.innerHTML = "<span>📅 " + (n === 1
+        ? "1 file looks like it was taken in <b>" + y + "</b>"
+        : n + " files look like they were taken in <b>" + y + "</b>") +
+      ", but <b>" + $("#year").value + "</b> is selected.</span> " +
+      "<button class='btn ghost' id='useyear'>Switch to " + y + "</button>";
+    $("#useyear").onclick = function () {
+      $("#year").value = y;
+      refreshExisting();
+      suggestYear();
+      log("Season set to " + y + " from the file dates.");
+    };
   }
 
   function renderQueue() {
@@ -275,6 +427,9 @@
     queue.forEach(function (q, i) {
       var li = document.createElement("li");
       var notes = [];
+      var taken = q.taken
+        ? q.taken.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
+        : null;
       if (HEIC.test(q.name)) notes.push("HEIC won't display in browsers — export as JPG first.");
       if (/\.mov$/i.test(q.name)) notes.push("MOV often won't play in Chrome — MP4 is safer.");
       if (q.file.size > 100 * 1048576) notes.push("Over 100 MB — GitHub will refuse this file.");
@@ -282,7 +437,8 @@
 
       li.innerHTML =
         "<img class='thumb' alt=''>" +
-        "<div class='meta'><div class='fn'>" + (VIDEO.test(q.name) ? "▶ " : "") + esc(q.name) + "</div>" +
+        "<div class='meta'><div class='fn'>" + (VIDEO.test(q.name) ? "▶ " : "") + esc(q.name) +
+        (taken ? " <span class='taken'>📅 " + esc(taken) + "</span>" : "") + "</div>" +
         "<input type='text' placeholder='Caption (optional)' value='" + esc(q.caption) + "' data-i='" + i + "'>" +
         (notes.length ? "<div class='warn'>" + esc(notes.join(" ")) + "</div>" : "") +
         "</div><span class='size'>" + human(q.file.size) + "</span>" +

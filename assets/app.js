@@ -525,7 +525,15 @@
       } else {
         f.innerHTML = "<img loading='lazy' src='" + esc(src) + "' alt='" + esc(alt) + "'>" +
           (p.caption ? "<figcaption>" + esc(p.caption) + "</figcaption>" : "");
-        f.querySelector("img").onclick = function () { lightbox(src, false); };
+        var img = f.querySelector("img");
+        img.onclick = function () { lightbox(src, false); };
+        // a listed file that isn't on disk should say so, not show a broken-image icon
+        img.onerror = function () {
+          var ph = el("div", "missing");
+          ph.innerHTML = "<b>File not found</b><span>" + esc(src) + "</span>";
+          img.replaceWith(ph);
+          f.classList.add("gone");
+        };
       }
       g.appendChild(f);
     });

@@ -93,7 +93,9 @@ Open **`add-photos.html`** (also linked in the site's footer):
 1. **Choose site folder…** → pick your `scc-fantasy` folder. Chrome will ask permission
    to edit it — expected, and nothing leaves your computer.
 2. Pick the season.
-3. Drag photos and videos in. Add captions if you like.
+3. Drag photos and videos in. Add captions if you like. Each file shows the date it
+   was taken when that information survives in the file, and if they all point at one
+   season the tool offers a one-click switch — it never changes the season on its own.
 4. **Save to the site**, then Commit → Push in GitHub Desktop.
 
 It copies files into `photos/<year>/` and updates `data/photos.json` for you, tidies
@@ -145,4 +147,6 @@ See `README.md`. Or just send me the ESPN league JSON and the Draft Recap PDF.
 | GitHub refuses a file | Over 100 MB | Trim or compress it |
 | "This browser can't write files" | Safari or Firefox | Use Chrome or Edge |
 | Edited `photos.json` by hand and `SCC-Fantasy-History.html` didn't change | That file has the data baked in | Open `add-photos.html` and connect the folder — it syncs automatically |
+| No 📅 date on a file | Screenshots, edited copies and PNGs usually lose it | Pick the season yourself; the date is only ever a hint |
+| The 📅 date is the wrong year | It's a screenshot of an older photo — the date is when you screenshotted | Ignore the suggestion and pick the real season |
 | Push button says you're behind | Edited on github.com and locally | Click **Pull origin** first, then push |

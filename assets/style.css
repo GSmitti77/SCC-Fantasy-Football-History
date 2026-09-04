@@ -205,3 +205,23 @@ h1.title span{color:var(--blue-lt)}
 .yearhead h3{margin:0;font-size:19px;color:var(--ink);text-transform:none;letter-spacing:-.2px}
 .yearhead a{text-decoration:none;font-size:13px;white-space:nowrap}
 .yearhead a:hover{color:var(--blue-lt)}
+
+/* capture-date hint in the add-photos queue */
+.taken{font-size:11px;color:var(--blue-lt);font-weight:600;white-space:nowrap}
+#suggest{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;padding:11px 14px;
+  border:1px solid var(--blue-dk);background:#102a48;border-radius:10px;font-size:13.5px;color:var(--muted);
+}
+#suggest b{color:var(--ink)}
+
+/* a gallery entry whose file isn't on disk */
+.gallery figure.gone{border-color:#4a302b;background:#1c1412}
+.gallery .missing{
+  width:100%;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;background:#20161a;color:var(--toilet);text-align:center;padding:12px;
+}
+.gallery .missing b{font-size:13px}
+.gallery .missing span{
+  font:11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dim);
+  word-break:break-all;max-width:100%;
+}

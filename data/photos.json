@@ -121,10 +121,6 @@
       "caption": "Draft day 2024"
     },
     {
-      "file": "couch-crew.jpg",
-      "caption": "Hanging out on draft day 2024"
-    },
-    {
       "file": "wings.jpg",
       "caption": "Wings on the couch, 2024 draft day"
     },
@@ -139,6 +135,11 @@
     {
       "file": "doorway.jpg",
       "caption": "2024 draft day"
+    },
+    {
+      "file": "draft-day-clip.mp4",
+      "poster": "couch-crew.jpg",
+      "caption": "Draft day 2024"
     }
   ],
   "2025": [],
